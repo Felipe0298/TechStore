@@ -1,0 +1,30 @@
+.Navbar{
+    background-color: aqua;
+    padding: 1%;
+}
+
+.h1__Navbar{
+    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+button{
+    font-size: 1.2rem;
+    transition-delay: 0.2s;
+    margin: 1%;
+}
+
+button:hover{
+    color: blue;
+    font-weight: bolder;
+}
+
+
+.div__Navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1%;
+
+}   
+
