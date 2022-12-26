@@ -2,6 +2,12 @@
   padding: 1%;
 }
 
+.div__h1{
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
 .h1__Navbar {
   font-size: 3rem;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -10,8 +16,8 @@
   text-align: center;
   white-space: nowrap;
   border-right: 4px solid;
-  width: 8ch;
-  -webkit-animation: typing 2s steps(8), blink 0.5s infinite step-end alternate;
+ width: 8ch;
+-webkit-animation: typing 2s steps(8), blink 0.5s infinite step-end alternate;
           animation: typing 2s steps(8), blink 0.5s infinite step-end alternate;
   overflow: hidden;
  text-align: center;
@@ -65,3 +71,4 @@ button:hover {
   justify-content: space-between;
   margin: 1%;
 }
+
