@@ -1,9 +1,9 @@
 import './cartWidget.css'
 const CartWidget = () => {
   return (
-    <div>
+    <div className="div__CartWidget">
       <img className="img__CartWidget" src="./images/cart.svg" alt="cartWidget" />
-      7
+      <p>7</p>
     </div>
   );
 };
