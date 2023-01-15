@@ -1,21 +1,19 @@
-import CartWidget from "../cartWidget/cartWidget";
-import "./Navbar.css";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
-    <nav className="Navbar">
-      <div className="div__h1">
-        <h1 className="h1__Navbar">TechStore</h1>
-      </div>
-
+    <nav className="nav__Navbar">
+      <h1 className="h1__Navbar">TechStore</h1>
       <div className="div__Navbar">
-        <div className="div__Navbar">
-          <button>Inicio</button>
-          <button>Samsung</button>
-          <button>LG</button>
-          <button>Apple</button>
-          <button>Contacto</button>
-        </div>
-        <CartWidget />
+        <Link to="/" className="link__Navbar">
+          Inicio
+        </Link>
+        <Link to="/category/celular" className="link__Navbar">
+          Celulares
+        </Link>
+        <Link to="/category/tablet" className="link__Navbar">
+          Tablet
+        </Link>
       </div>
     </nav>
   );

@@ -1,39 +1,43 @@
-import './ItemListContainer.css'
-import { getProducts } from '../../asyncMock'
-import React, { useEffect, useState } from 'react'
-import ItemList from '../ItemList/ItemList'
+import { getProducts, getProductsByCategory } from "../../asyncMock";
+import { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = ({greeting}) => {
-    const [products, setProducts] = useState([])
-    const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(true)
+const ItemListContainer = ({ greeting }) => {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { categoryId } = useParams();
 
-    useEffect(() =>{
-        getProducts().then(productsFromApi =>{
-            setProducts(productsFromApi)
-        }).catch(error =>{
-            setError(true)
-        }).finally(()=>{
-            setLoading(false)
-        })
-    }, [])
+  useEffect(() => {
+    const asyncFunction = categoryId ? getProductsByCategory : getProducts;
 
-    console.log(products);
-    
-    if(loading){
-        return <h1>Cargando...</h1>
-    }
+    asyncFunction(categoryId)
+      .then((products) => {
+        setProducts(products);
+      })
+      .catch((error) => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [categoryId]);
 
-    if(error){
-        return <h1>Recargue la pagina</h1>
-    }
+  if (loading) {
+    return <h1>Cargando...</h1>;
+  }
 
-    return(
-        <div>
-            <h2 className="h2__ItemListContainer">{greeting}</h2>
-            <ItemList products={products}/>
-        </div>
-    )
-}
+  if (error) {
+    return <h1>Recargue la pagina</h1>;
+  }
 
-export default ItemListContainer
+  return (
+    <div>
+      <h1>{greeting}</h1>
+      <ItemList products={products} />
+    </div>
+  );
+};
+
+export default ItemListContainer;
