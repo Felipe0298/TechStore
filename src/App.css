@@ -3,9 +3,6 @@
   margin: 0px;
   text-align: center;
   box-sizing: border-box;
-  /* background-image: url(https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148808450.jpg?w=360); 
-  background-repeat: no-repeat;
-  background-size: cover;*/
 }
 
 /* Item component */
@@ -102,6 +99,6 @@ font-size: 1.3rem;
 .button__ItemCount{
   color: blue;
   margin: 0 2%;
-  font-weight: bolder;
+  font-size: 2rem;
 
 }
