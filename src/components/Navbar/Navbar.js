@@ -11,8 +11,8 @@ const Navbar = () => {
         <Link to="/category/apple" className="link__Navbar">
           Apple
         </Link>
-        <Link to="/category/tablet" className="link__Navbar">
-          Tablet
+        <Link to="/category/samsung" className="link__Navbar">
+          Samsung
         </Link>
       </div>
     </nav>

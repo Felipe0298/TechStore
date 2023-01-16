@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from 'react-bootstrap/Button';
+
 
 const ItemCount = ({ initial = 1, stock, onAdd }) => {
   const [count, setCount] = useState(initial);
@@ -15,11 +17,11 @@ const ItemCount = ({ initial = 1, stock, onAdd }) => {
   };
 
   return (
-    <div>
+    <div className="div__ItemCount">
       <h3>{count}</h3>
-      <button onClick={decrement}>-</button>
-      <button onClick={()=> onAdd(count)}>Agregar al carrito</button>
-      <button onClick={increment}>+</button>
+      <Button variant="dark" onClick={decrement} className="button__ItemCount">-</Button>
+      <Button variant="outline-dark" onClick={()=> onAdd(count)} className="button__ItemCount">Agregar al carrito</Button>
+      <Button variant="dark" onClick={increment} className="button__ItemCount">+</Button>
     </div>
   );
 };

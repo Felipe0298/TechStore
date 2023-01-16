@@ -1,8 +1,11 @@
 * {
-  padding: 0px;
+  padding: 1px;
   margin: 0px;
   text-align: center;
   box-sizing: border-box;
+  background-image: url(https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148808450.jpg?w=360);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Item component */
@@ -61,15 +64,25 @@
 
 /* ItemDetail */
 
-.div__ItemDetails-category{
-  text-transform:uppercase;
+.h4__ItemDetails-category{
+  animation-duration: 4s;
+  animation-name: opacity;
+  text-transform: capitalize;
 }
+
+@keyframes opacity{
+  from{opacity: 0;}
+  to{opacity: 100;}
+}
+
 .div__ItemDetails{
   display: flex;
 }
 
 .div__ItemDetails-carousel{
   width: 50%;
+  background-color:transparent; 
+
 }
 
 .div__ItemDetails-info{
@@ -77,4 +90,16 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 margin: 0 auto;
+font-size: 1.3rem;
+}
+
+.div__ItemDetails-description{
+  text-align: justify;
+  
+}
+
+/* ItemCount */
+.button__ItemCount{
+  color: black;
+  margin: 0 2%;
 }
