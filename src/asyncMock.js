@@ -100,6 +100,17 @@ const products = [
     stock: 3,
     description: "El Samsung Galaxy Z Fold 4 es la cuarta generación del primer foldable smartphone de Samsung. El Galaxy Z Fold4 cuenta con una pantalla interna AMOLED de 7.6 pulgadas a resolución FHD+ y tasa de refresco de 120Hz, que esconde una cámara selfie de 4MP. Al estar cerrado, el Galaxy Z Fold 4 cuenta con una pantalla AMOLED de 6.2 pulgadas, también de 120Hz de refresco. Por dentro encontramos un procesador Snapdragon 8+ Gen 1 acompañado de 12GB de RAM con hasta 1TB de almacenamiento interno, y una batería de 4400 mAh con carga rápida de 25W por cable y carga inalámbrica de 15W. La cámara posterior del Galaxy Z Fold4 es triple, con un sensor principal de 50MP, una cámara ultrawide de 12MP y una cámara telefoto de 10MP y la cámara selfie de la pantalla cover es de 10MP. El Galaxy Z Fold4 completa sus características con parlantes stereo, lector de huellas lateral, resistencia al agua y polvo, soporte para stylus S Pen, Samsung DeX, y corre Android 12L.",
   },
+  {
+    id: "10",
+    name: "Samsung A53 5G 128gb",
+    price: 336.99,
+    category: "samsung",
+    img: "https://www.alkosto.com/medias/8806094178838-001-1400Wx1400H?context=bWFzdGVyfGltYWdlc3w0MDQ1NDZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDBjL2g3ZC8xMzI5OTAwOTQ1NDExMC5qcGd8ZjRjYTYwODY4YTZhOWZmMmY4OWFhYjQ5ZjczYjFkY2MwYjA4OWQxMTFhNjRkZGM4MjE1ZGE5MDMzYTBjNzAzNQ",
+    img2:"https://www.alkosto.com/medias/8806094178838-002-1400Wx1400H?context=bWFzdGVyfGltYWdlc3wzMzMxODZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDc3L2g2Ny8xMTc1NjQ0MTc5NjYzOC5qcGd8ZjAzMGJmNWEwNmUxOTY1NzBjODAwMjJkNjNiZjU4MDdlYjg4ZTY1ZTMxNDQwNjhjNWE5NDUyODc0Y2RhMGZiZQ",
+    img3:"https://www.alkosto.com/medias/8806094178838-004-1400Wx1400H?context=bWFzdGVyfGltYWdlc3w0ODgzMXxpbWFnZS9qcGVnfGltYWdlcy9oOTgvaDAzLzExNzU2NDQyMzg2NDYyLmpwZ3wzM2U0YWQwOGUwMmE1N2I3MTQxZjU1OTcwN2U5YmVjMGYzNDMwNTU5OGM2ODM4OGZhY2I5OTE5ZTU1YTE4Yjli",
+    stock: 30,
+    description: "El Samsung Galaxy A53 5G es el sucesor del A52 con una pantalla Super AMOLED de 6.5 pulgadas a resolución FHD+ y tasa de refresco de 120Hz, protegida por vidrio Gorilla Glass 5. Por dentro, encontramos un procesador octa-core con hasta 8GB de RAM y 128GB o 256GB de almacenamiento interno expandible. La cámara trasera es cuádruple, con lentes de 64MP con OIS, ultrawide de 12MP, macro de 5MP y profundidad de 5MP, siendo la cámara selfie de 32MP. El Galaxy A53 5G está alimentado por una batería de 5000 mAh de carga rápida, tiene parlantes stereo, lector de huellas bajo la pantalla, resistencia al agua IP67 y corre Android 12.",
+  },
 ];
 
 export const getProducts = (categoryId) => {

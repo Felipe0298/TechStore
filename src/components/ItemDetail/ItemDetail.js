@@ -39,13 +39,13 @@ const ItemDetail = ({ id, name, img, category, description, stock, price, img2, 
               <Card.Title>{name}</Card.Title>
               <Card.Subtitle className="div__ItemDetails-description">{description}</Card.Subtitle>
               <Card.Title className="mt-2">Precio: ${price}</Card.Title>
-              <Card.Text>
+              <div>
                 {quantity > 0 ? (
                   <Link><Button variant="outline-dark">Terminar compra</Button></Link>
                 ) : (
                   <ItemCount stock={stock} onAdd={handleOnAdd} />
                 )}
-              </Card.Text>
+              </div>
             </Card.Body>
           </Card>
         </div>
