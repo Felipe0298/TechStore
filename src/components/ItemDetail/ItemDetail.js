@@ -1,18 +1,21 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/Button';
+import { CartContext } from "../../context/CartContext";
 
 
 const ItemDetail = ({ id, name, img, category, description, stock, price, img2, img3}) => {
   const [quantity, setQuantity] = useState(0);
+  const {addItem} = useContext(CartContext)
 
-  const handleOnAdd = (qty) => {
-    console.log(`Se agregaron ${qty} ${name}`);
+  const handleOnAdd = (quantity) => {
+    console.log(`Se agregaron ${quantity} ${name}`);
 
-    setQuantity(qty);
+    setQuantity(quantity);
+    addItem({id, name, quantity, price})
   };
 
   return (
