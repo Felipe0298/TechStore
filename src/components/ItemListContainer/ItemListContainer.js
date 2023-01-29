@@ -42,7 +42,7 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div>
-      <h1>{greeting}</h1>
+      <h1>{categoryId ? `Nuestros productos ${categoryId.charAt(0).toUpperCase() + categoryId.slice(1)}` : "Nuestros productos"}</h1>
       <ItemList products={products} />
     </div>
   );
