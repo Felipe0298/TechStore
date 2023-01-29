@@ -44,7 +44,7 @@ const ItemDetail = ({ id, name, img, category, description, stock, price, img2, 
               <Card.Title className="mt-2">Precio: ${price}</Card.Title>
               <div>
                 {quantity > 0 ? (
-                  <Link><Button variant="outline-dark">Terminar compra</Button></Link>
+                  <Link to="/cart"><Button variant="outline-dark">Terminar compra</Button></Link>
                 ) : (
                   <ItemCount stock={stock} onAdd={handleOnAdd} />
                 )}
