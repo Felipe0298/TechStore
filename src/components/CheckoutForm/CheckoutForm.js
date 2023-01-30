@@ -1,38 +1,38 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const CheckoutForm = () => {
-    const [formData, setFormData] = useState({name :"", phone:"", email:""});
-    const handleChange = (event) =>{
-        setFormData({...formData, [event.target.name]:event.target.value})
-    }
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
-    const handleSubmit = (event) =>{
-        event.preventDefault()
-        console.log(formData);
-        
-    }
+  return (
+    <div>
+      <form>
+        <label>Nombre:</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        ></input>
 
-    return (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Nombre:
-            <input type="text" name="name" onChange={handleChange} />
-          </label>
-          <br />
-          <label>
-            Email:
-            <input type="email" name="email" onChange={handleChange} />
-          </label>
-          <br />
-          <label>
-            Telefono:
-            <textarea name="phone" onChange={handleChange} />
-          </label>
-          <br />
-          <button type="submit">Finalizar compra</button>
-        </form>
-        );
-    };
-    
+        <label>Correo electrónico:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        ></input>
 
-export default CheckoutForm
+        <label>Celular</label>
+        <input
+          type="number"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+        ></input>
+      </form>
+
+      <button>Procesar compra</button>
+    </div>
+  );
+};
+
+export default CheckoutForm;

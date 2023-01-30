@@ -17,10 +17,11 @@ const Checkout = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const [orderId, setOrderId] = useState("");
   const navigate = useNavigate()
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [email, setEmail] = useState("")
 
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+ 
   const createOrder = async () => {
     setLoading(true);
     try {
@@ -104,25 +105,23 @@ const Checkout = () => {
       </div>
     )
   }
+
+  
   return (
     <div>
       <h1>Checkout</h1>
-      {/* <input type="text" value={name} onChange={(event)=> setName(event.target.value)}></input>
-      <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)}></input>
-      <input type="text" value={email} onChange={(event)=> setEmail(event.target.value)}></input> */}
-
 <form>
     <label>Nombre:</label>
-    <input type="text" value={name} onChange={(event)=> setName(event.target.value)}></input>
+    <input type="text" value={name} onChange={(event)=> setName(event.target.value)} required></input>
 
     <label>Correo electrónico:</label>
-    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)}></input>
+    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required></input>
 
     <label>Celular</label>
-    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)}></input>
+    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required></input>
+<button onClick={createOrder}>Procesar compra</button>
 </form>
 
-      <button onClick={createOrder}>Procesar compra</button>
     </div>
   );
 };
