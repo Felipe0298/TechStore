@@ -19,6 +19,7 @@ const Checkout = () => {
   const navigate = useNavigate()
 
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
  
@@ -28,6 +29,7 @@ const Checkout = () => {
       const objOrder = {
         buyer: {
           name,
+          lastName,
           phone,
           email
         },
@@ -93,7 +95,8 @@ const Checkout = () => {
   if(orderId) {
     return (
       <div>
-        <h1>El ID de tu orden es: {orderId}</h1>
+        <h1>Muchas gracias por tu compra</h1>
+        <h2>El ID de tu orden es: {orderId}</h2>
       </div>
     );
   }
@@ -101,25 +104,28 @@ const Checkout = () => {
   if(cart.length === 0){
     return(
       <div>
-        <h1>No hay producto en el carrito</h1>
+        <h1>No hay producto en el carritos</h1>
       </div>
     )
   }
 
   
   return (
-    <div>
+    <div style={{display:"flex", flexDirection:"column"}}>
       <h1>Checkout</h1>
-<form>
+<form style={{display:"flex", flexDirection:"column", width:"50%", margin:"0 auto", padding:"2%", background:"rgb(255,255,255)", background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(128,137,139,0.2358193277310925) 100%)"}}>
     <label>Nombre:</label>
     <input type="text" value={name} onChange={(event)=> setName(event.target.value)} required></input>
 
+    <label>Apellido:</label>
+    <input type="text" value={lastName} onChange={(event)=> setLastName(event.target.value)} required></input>
+
     <label>Correo electrónico:</label>
-    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required></input>
+    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required pattern="[^@\s]+@[^@\s]+"></input>
 
     <label>Celular</label>
     <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required></input>
-<button onClick={createOrder}>Procesar compra</button>
+<button style={{marginTop:"3%"}} onClick={createOrder}>Procesar compra</button>
 </form>
 
     </div>

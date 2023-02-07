@@ -1,44 +1,22 @@
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
-import Table from "react-bootstrap/Table";
 
 const ItemCart = ({ name, quantity, price, id }) => {
-  const { removeItem, total } = useContext(CartContext);
+  const { removeItem } = useContext(CartContext);
 
+  
   return (
-    <article
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        backgroundColor: "#efefef",
-      }}
-    >
-      <Table striped="columns">
-        <thead>
-          <tr>
-            <th>Cantidad</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{quantity}</td>
-            <td>{name}</td>
-            <td>{price}</td>
-            <td>@{price * quantity}</td>
-            <button
-              onClick={() => removeItem(id)}
-              style={{ backgroundColor: "red" }}
-            >
-              Remover
-            </button>
-          </tr>
-        </tbody>
-      </Table>
-    </article>
+
+    <tr>
+      <td>{quantity}</td>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>{(price * quantity).toFixed(2)}</td>
+      <td><button className="button__ItemCart" style={{background: "##ED213A", background: "-webkit-linear-gradient(to top, #93291E, #ED213A)",background: "linear-gradient(to top, #93291E, #ED213A)", color:"black", borderRadius:"10%"}} onClick={() => removeItem(id)}>Eliminar articulo
+      </button></td>
+    </tr>
   );
 };
 
 export default ItemCart;
+

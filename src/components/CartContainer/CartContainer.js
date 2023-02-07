@@ -4,10 +4,9 @@ import CartList from "../CartList/CartList";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-
 const CartContainer = () => {
   const { cart } = useContext(CartContext);
-
+  
   return (
     <div>
       <h1>Tu carrito:</h1>

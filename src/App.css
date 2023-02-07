@@ -104,9 +104,15 @@ font-size: 1.3rem;
 
 /* ItemCount */
 .button__ItemCount{
-  color: blue;
   margin: 0 2%;
   font-size: 2rem;
 
+}
+
+/* ItemCart */
+.button__ItemCart{
+  background-color: red;
+  color: red;
+  font-weight: 700;
 }
 

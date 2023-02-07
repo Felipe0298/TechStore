@@ -44,6 +44,8 @@ const CartProvider = ({children}) =>{
         setCart([])
     }
 
+   
+    
     const totalQuantity = getTotalQuantity()
     const total = getTotal()
 
