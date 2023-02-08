@@ -22,9 +22,12 @@ const Checkout = () => {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
- 
-  const createOrder = async () => {
+  const [email2, setEmail2] = useState("");
+
+  const createOrder = async (e) => {
+    e.preventDefault()
     setLoading(true);
+    
     try {
       const objOrder = {
         buyer: {
@@ -36,6 +39,11 @@ const Checkout = () => {
         items: cart,
         total,
       };
+      
+      if (objOrder.buyer.name === "" || objOrder.buyer.lastName === "" || objOrder.buyer.phone === ""|| objOrder.buyer.email === "" || objOrder.buyer.email !== email2) {
+        alert("Verifica los datos ingresados")
+        return false;
+      }
 
       const batch = writeBatch(db);
 
@@ -86,7 +94,10 @@ const Checkout = () => {
     } finally {
       setLoading(false);
     }
+
   };
+
+  
 
   if (loading) {
     return <h1>Generando orden</h1>;
@@ -115,17 +126,21 @@ const Checkout = () => {
       <h1>Checkout</h1>
 <form style={{display:"flex", flexDirection:"column", width:"50%", margin:"0 auto", padding:"2%", background:"rgb(255,255,255)", background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(128,137,139,0.2358193277310925) 100%)"}}>
     <label>Nombre:</label>
-    <input type="text" value={name} onChange={(event)=> setName(event.target.value)} required></input>
+    <input type="text" value={name} onChange={(event)=> setName(event.target.value)} required ></input>
 
     <label>Apellido:</label>
-    <input type="text" value={lastName} onChange={(event)=> setLastName(event.target.value)} required></input>
+    <input type="text" value={lastName} onChange={(event)=> setLastName(event.target.value)} required ></input>
 
     <label>Correo electrónico:</label>
     <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required pattern="[^@\s]+@[^@\s]+"></input>
 
+    <label>Verifica el correo electrónico:</label>
+    <input type="email" value={email2} onChange={(event)=> setEmail2(event.target.value)} required pattern="[^@\s]+@[^@\s]+"></input>
+
     <label>Celular</label>
-    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required></input>
-<button style={{marginTop:"3%"}} onClick={createOrder}>Procesar compra</button>
+    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required minLength={10} ></input>
+    
+<button style={{marginTop:"3%"}} onClick={createOrder} >Procesar compra</button>
 </form>
 
     </div>
