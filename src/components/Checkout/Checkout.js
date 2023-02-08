@@ -132,13 +132,13 @@ const Checkout = () => {
     <input type="text" value={lastName} onChange={(event)=> setLastName(event.target.value)} required ></input>
 
     <label>Correo electrónico:</label>
-    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required pattern="[^@\s]+@[^@\s]+"></input>
+    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required pattern="[^@\s]+@[^@\s]+" minLength="5"></input>
 
     <label>Verifica el correo electrónico:</label>
-    <input type="email" value={email2} onChange={(event)=> setEmail2(event.target.value)} required pattern="[^@\s]+@[^@\s]+"></input>
+    <input type="email" value={email2} onChange={(event)=> setEmail2(event.target.value)} required pattern="[^@\s]+@[^@\s]+" minLength="5"></input>
 
     <label>Celular</label>
-    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required minLength={10} ></input>
+    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required minLength="10" ></input>
     
 <button style={{marginTop:"3%"}} onClick={createOrder} >Procesar compra</button>
 </form>
