@@ -8,7 +8,7 @@ const ItemDetailContainer = () => {
     const {productId} = useParams()
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
-
+    const [productoInexistente, setProductoInexistente] = useState(false)
 
     useEffect(()=>{
         (async()=>{
@@ -19,6 +19,7 @@ const ItemDetailContainer = () => {
                 const fields = snapshot.data()
                 const productAdapted = { id: snapshot.id, ...fields}
                 setProduct(productAdapted)
+                Object.entries(productAdapted).length > 1 ?setProduct(productAdapted):setProductoInexistente(true)
             } catch(error){
                 console.log(error);
             } finally{
@@ -27,10 +28,16 @@ const ItemDetailContainer = () => {
         })()
 },[productId])
 
+console.log(product);
+
 if (loading) {
     return <h1>Cargando...</h1>;
   }
 
+  if (productoInexistente) {
+    return <h1>El producto no existe</h1>;
+  }
+  
 return(
     <div>
         <h2>Detalle del producto</h2>

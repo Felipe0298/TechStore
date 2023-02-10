@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const { cart, total, clearCart } = useContext(CartContext);
@@ -24,80 +25,79 @@ const Checkout = () => {
   const [email, setEmail] = useState("");
   const [email2, setEmail2] = useState("");
 
+
   const createOrder = async (e) => {
-    e.preventDefault()
-    setLoading(true);
-    
+  e.preventDefault()
+  let objOrder = {
+    buyer: {
+    name,
+    lastName,
+    phone,
+    email,
+    date : new Date(),
+    status: "GENERADO"
+    },
+    items: cart,
+    total,
+    };
+  if (objOrder.buyer.name === "" || objOrder.buyer.lastName === "" || objOrder.buyer.phone === ""|| objOrder.buyer.email === "" || objOrder.buyer.email !== email2) {
+  alert("Verifica los datos ingresados")
+  }else{
     try {
-      const objOrder = {
-        buyer: {
-          name,
-          lastName,
-          phone,
-          email
-        },
-        items: cart,
-        total,
-      };
-      
-      if (objOrder.buyer.name === "" || objOrder.buyer.lastName === "" || objOrder.buyer.phone === ""|| objOrder.buyer.email === "" || objOrder.buyer.email !== email2) {
-        alert("Verifica los datos ingresados")
-        return false;
-      }
-
+      setLoading(true);
       const batch = writeBatch(db);
-
+      
       const getId = cart.map((prod) => prod.id);
-
+      
       const productsRef = query(
-        collection(db, "products"),
-        where(documentId(), "in", getId)
+      collection(db, "products"),
+      where(documentId(), "in", getId)
       );
-
+      
       const productsAddedToCartFromFirestore = await getDocs(productsRef);
       const { docs } = productsAddedToCartFromFirestore;
-
+      
       const outOfStock = [];
-
+      
       docs.forEach((doc) => {
-        const dataDoc = doc.data();
-        const stockDb = dataDoc.stock;
-
-        const productAddedToCart = cart.find((prod) => prod.id === doc.id);
-        const prodQuantity = productAddedToCart.quantity;
-        if (stockDb >= prodQuantity) {
-          batch.update(doc.ref, { stock: stockDb - prodQuantity });
-        } else {
-          outOfStock.push({ id: doc.id, ...dataDoc });
-        }
-      });
-
-      if (outOfStock.length === 0) {
-        await batch.commit();
-        const orderRef = collection(db, "orders");
-        const orderAdded = await addDoc(orderRef, objOrder);
-        const { id } = orderAdded;
-        setOrderId(id);
-
-        clearCart();
-
-        setTimeout(()=>{
-          navigate("/")
-        }, 5000)
-
-        console.log(id);
+      const dataDoc = doc.data();
+      const stockDb = dataDoc.stock;
+      
+      const productAddedToCart = cart.find((prod) => prod.id === doc.id);
+      const prodQuantity = productAddedToCart.quantity;
+      if (stockDb >= prodQuantity) {
+      batch.update(doc.ref, { stock: stockDb - prodQuantity });
       } else {
-        console.log("Hay productos sin stock");
+      outOfStock.push({ id: doc.id, ...dataDoc });
       }
-    } catch (error) {
+      });
+      
+      if (outOfStock.length === 0) {
+      await batch.commit();
+      const orderRef = collection(db, "orders");
+      const orderAdded = await addDoc(orderRef, objOrder);
+      const { id } = orderAdded;
+      setOrderId(id);
+      
+      clearCart();
+      
+      setTimeout(()=>{
+      navigate("/")
+      }, 5000)
+      
+      console.log(id);
+      } else {
+      console.log("Hay productos sin stock");
+      }
+      } catch (error) {
       console.error(error);
-    } finally {
+      } finally {
       setLoading(false);
-    }
-
-  };
-
+      }
+  }
   
+  
+  };
 
   if (loading) {
     return <h1>Generando orden</h1>;
@@ -132,13 +132,13 @@ const Checkout = () => {
     <input type="text" value={lastName} onChange={(event)=> setLastName(event.target.value)} required ></input>
 
     <label>Correo electrónico:</label>
-    <input type="email" value={email} onChange={(event)=> setEmail(event.target.value)} required pattern="[^@\s]+@[^@\s]+" minLength="5"></input>
+    <input type="email" value={email} required pattern="[^@\s]+@[^@\s]+" minLength="5" onChange={(event)=> setEmail(event.target.value)}></input>
 
     <label>Verifica el correo electrónico:</label>
-    <input type="email" value={email2} onChange={(event)=> setEmail2(event.target.value)} required pattern="[^@\s]+@[^@\s]+" minLength="5"></input>
+    <input type="email" value={email2} required pattern="[^@\s]+@[^@\s]+" minLength="5" onChange={(event)=> setEmail2(event.target.value)}></input>
 
     <label>Celular</label>
-    <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} required minLength="10" ></input>
+    <input type="number" value={phone} required minLength="10" onChange={(event)=> setPhone(event.target.value)}></input>
     
 <button style={{marginTop:"3%"}} onClick={createOrder} >Procesar compra</button>
 </form>
